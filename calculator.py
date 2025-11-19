@@ -70,17 +70,83 @@ for row in range(row_count):
 
         button.grid(row=row + 1, column=column)
 
-
-           
-def button_clicked(value):
-    pass
-
-
-
-
-
-
 frame.pack()
+
+A = "0"
+
+operator = None   
+
+B = None
+
+def clear_all():
+
+    global A , B , operator
+
+    A = "0"
+
+    B = None
+
+    operator = None
+
+
+
+def remove_zero(num):
+
+   if num % 1 == 0:
+
+       num = int(num) 
+       
+   return str(num)
+
+
+
+def button_clicked(value):
+    global right_symbols, top_symbols, label, A, B, operator
+
+    if value in right_symbols:
+        pass
+    elif value in top_symbols:
+        if value ==  "AC":
+
+           clear_all()
+
+           label["text"]= "0"
+
+        
+
+        elif value == "+/-":
+
+           result = float(label["text"]) * -1
+
+           label["text"] = remove_zero(result)
+
+
+
+        elif value == "%":
+
+           result = float(label["text"]) / 100
+
+           label["text"] = remove_zero(result)
+    else:
+         if value == ".":
+
+           if value not in label["text"]:
+
+               label["text"] += value
+
+         elif value in "0123456789":
+            if operator is not None and label["text"] == A:
+
+                label["text"] = value
+
+            elif label["text"] == "0":
+
+               label["text"] = value
+
+            else:
+
+               label["text"] += value
+
 
 window.update()
 
