@@ -14,6 +14,17 @@ top_symbols = ["AC", "+/-", "%"]
 row_count = len(button_values)
 column_count = len(button_values[0])
 
+# color 
+
+orange = '#505050'
+
+grey = '#D4D4D2'
+
+black = '#1C1C1C'
+
+white = '#ffffff'
+
+darkgray = "#505050"
 
 # window setup
 window = tk.Tk()
@@ -22,5 +33,50 @@ window.resizable(width=False, height=False)
 frame = tk.Frame(window)
 label = tk.Label(frame, text= "0", font = ("Arial", 30), anchor="e", width = column_count)
 label.grid(row=0, column=0, columnspan=column_count, sticky="we")
+
+
+# button setup
+
+
+for row in range(row_count):
+
+    for column in range(column_count):
+
+        value = button_values[row][column]
+
+        button = tk.Button(frame, text=value, 
+
+            width=column_count-1, 
+
+            height=1, 
+
+            font=("Arial", 30),
+
+            command =lambda value=value: button_clicked(value))
+
+        
+
+        if value in right_symbols:
+
+            button.config(background = grey, foreground =black)
+
+        elif value in top_symbols:
+
+            button.config(background =orange, foreground =black)
+
+        else:
+
+            button.config(background =darkgray, foreground= black)
+
+        button.grid(row=row + 1, column=column)
+
+
+
+
+
+
 frame.pack()
+
+
+
 window.mainloop()
