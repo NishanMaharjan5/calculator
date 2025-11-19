@@ -71,11 +71,42 @@ for row in range(row_count):
         button.grid(row=row + 1, column=column)
 
 
+           
+def button_clicked(value):
+    pass
+
+
 
 
 
 
 frame.pack()
+
+window.update()
+
+window.width = window.winfo_width()
+
+window.height = window.winfo_height()
+
+screen_width = window.winfo_screenwidth()
+
+screen_height = window.winfo_screenheight()
+
+
+
+window.x = int((screen_width/2) - (window.width/2))
+
+window.y = int((screen_height/2) - (window.height/2))
+
+window.geometry(f"{window.width}x{window.height}+{window.x}+{window.y}")
+
+
+
+window.mainloop()
+
+
+
+
 
 
 
